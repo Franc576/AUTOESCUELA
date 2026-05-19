@@ -110,18 +110,48 @@ export class Signup {
       return;
     }
 
-    this.enviando.set(true);
-    this.mensajeExito.set('');
-    this.mensajeError.set('');
+    // ── Guardamos los datos del usuario en localStorage ────────────────────
+    const nuevoUsuario = {
+      username: this.signupForm.value.username,
+      email: this.signupForm.value.email,
+      password: this.signupForm.value.password, // En producción, NUNCA guardar en texto plano
+    };
 
-    // ── Aquí iría la llamada real al backend ──────────────────────────────
-    // Por ahora simulamos un registro exitoso tras 1.5 segundos.
+    // Recuperamos la lista actual de usuarios registrados (o creamos una vacía)
+    const usuariosGuardados: any[] = JSON.parse(
+      localStorage.getItem('autoescuela_users') || '[]'
+    );
+
+    // Comprobamos si ya existe un usuario con el mismo nombre o correo
+    const existeUsuario = usuariosGuardados.some(
+      (u: any) =>
+        u.username === nuevoUsuario.username ||
+        u.email === nuevoUsuario.email
+    );
+
+    if (existeUsuario) {
+      this.mensajeError.set(
+        'Ya existe una cuenta con ese nombre de usuario o correo electrónico.'
+      );
+      this.enviando.set(false);
+      return;
+    }
+
+    // Añadimos el nuevo usuario al array y lo guardamos de vuelta
+    usuariosGuardados.push(nuevoUsuario);
+    localStorage.setItem(
+      'autoescuela_users',
+      JSON.stringify(usuariosGuardados)
+    );
+
+    // Simulamos un breve retardo para que el usuario vea el spinner de carga
     setTimeout(() => {
+      alert(`¡Registro completado con éxito! Bienvenido, ${nuevoUsuario.username}. Tus datos se han guardado de forma segura en el navegador.`);
       this.mensajeExito.set(
-        `¡Bienvenido, ${this.signupForm.value.username}! Tu cuenta ha sido creada con éxito.`
+        `¡Bienvenido, ${nuevoUsuario.username}! Tu cuenta ha sido creada con éxito. Ya puedes iniciar sesión.`
       );
       this.signupForm.reset();
       this.enviando.set(false);
-    }, 1500);
+    }, 800);
   }
 }

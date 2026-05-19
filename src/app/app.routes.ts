@@ -6,6 +6,7 @@ import { Permisos } from './pages/permisos/permisos';
 import { Conocenos } from './pages/conocenos/conocenos';
 import { Blog } from './pages/blog/blog';
 import { Signup } from './pages/signup/signup';
+import { Login } from './pages/login/login';
 
 export const routes: Routes = [
   { path: '', component: Home },
@@ -15,6 +16,7 @@ export const routes: Routes = [
   { path: 'test', component: Test },
   { path: 'permisos', component: Permisos },
   { path: 'signup', component: Signup },
+  { path: 'login', component: Login },
   { path: '**', redirectTo: '' }
 ];
 
