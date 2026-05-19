@@ -38,6 +38,8 @@ src/app/
 - [ ] **Diseño visual premium:** Aplicar rediseño de interfaz en modo oscuro moderno (estética premium, gradientes suaves, microanimaciones).
 - [x] **Lógica de Tests:** Implementación del sistema de preguntas/respuestas interactivo en la sección de test.
 - [ ] **Lógica de Reservas:** Sistema interactivo para reservar clases con calendario visual.
+- [x] **Página de Permisos de Conducción:** Implementación completa e interactiva de la página de permisos (B, A1, A2, A, AM, C, C+E, CAP) con estética glassmorphic de alto impacto y enrutamiento en Navbar.
+
 
 ---
 
@@ -99,7 +101,17 @@ En esta sección guardaremos los prompts de sistema y de desarrollo más útiles
 * **Prompt Utilizado:**
   > "no hay una forma de que se envie al gmail normal?"
 
+### 8. Creación de la Sección de Permisos de Conducción (Estilo Autoescuela Forti)
+* **Objetivo:** Crear una página interactiva, visualmente impactante y adaptada a dispositivos móviles, que detalle los diferentes permisos de conducción (B, A1, A2, A, AM, C, C+E, CAP) replicando el valor informativo de la página de Autoescuela Forti (`autoescuelaforti.com/permisos/`).
+* **Prompt Utilizado:**
+  > "https://autoescuelaforti.com/permisos/ podrías analizar esta página? hay un apartado con los tipos de permisos, y dentro de cada uno da información de cada permiso, necesto que añadas una parecida."
+* **Resultados:**
+  - **Componente `Permisos`**: Creado bajo `src/app/pages/permisos` en formato *standalone* de Angular.
+  - **Datos Estructurados**: Almacenados mediante Signals de Angular con detalles de edad mínima, categorías, descripciones comerciales, vehículos autorizados por la DGT, y líneas de tiempo de exámenes (teóricos/prácticos/cursos).
+  - **Estilo Visual**: Glassmorphic premium (transiciones hover, insignias iluminadas por categoría en cian/ámbar/púrpura, efectos radiales luminosos).
+  - **Integración**: Registrada la ruta `/permisos` en `app.routes.ts` y añadida la navegación en la Navbar. Aumentado el límite de presupuesto de estilos (`anyComponentStyle` a 20kB) en `angular.json` para dar cabida a los estilos interactivos.
+
 ---
 
 ## 🗃️ Registro Cronológico de Sesiones
-* **2026-05-19 (Sesión actual):** Creación y preparación del `memory_bank.md`. Configuración final de credenciales Git. Implementación funcional del simulador de test (30 preguntas, estado dinámico, pantalla de resultados). Creación de la rama `feat-formulario` y desarrollo del componente de Registro con estética Glassmorphism. Integración del formulario reactivo en la Home y desarrollo de la conexión con un endpoint de Express y Nodemailer para el envío automático y seguro de correos de confirmación desde Gmail.
+* **2026-05-19 (Sesión actual):** Creación y preparación del `memory_bank.md`. Configuración final de credenciales Git. Implementación funcional del simulador de test (30 preguntas, estado dinámico, pantalla de resultados). Creación de la rama `feat-formulario` y desarrollo del componente de Registro con estética Glassmorphism. Integración del formulario reactivo en la Home y desarrollo de la conexión con un endpoint de Express y Nodemailer para el envío automático y seguro de correos de confirmación desde Gmail. Análisis detallado e implementación premium de la página interactiva de Permisos de Conducción (B, A1, A2, A, AM, C, C+E, CAP) inspirada en Autoescuela Forti, con optimización de presupuestos de estilo en `angular.json` y verificación visual fluida en navegador. Actualización del formulario de registro para incluir todos los nuevos permisos (B, A1, A2, A, AM, C, C+E, CAP) como opciones seleccionables en el menú desplegable.
