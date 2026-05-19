@@ -78,9 +78,14 @@
         [attr.disabled]="enviando() ? true : null"
       >
         <option value="" disabled selected>Selecciona un permiso...</option>
-        <option value="coche_B">Coche - Permiso B</option>
-        <option value="moto_A">Moto - Permiso A2/A</option>
-        <option value="ciclomotor_AM">Ciclomotor - Permiso AM</option>
+        <option value="B">Coche - Permiso B</option>
+        <option value="A1">Moto Ligera - Permiso A1 (hasta 125cc)</option>
+        <option value="A2">Moto Intermedia - Permiso A2</option>
+        <option value="A">Moto sin límite - Permiso A</option>
+        <option value="AM">Ciclomotor - Permiso AM</option>
+        <option value="C">Camión Rígido - Permiso C</option>
+        <option value="CE">Tráiler / Camión con Remolque - Permiso C+E</option>
+        <option value="CAP">Certificado de Aptitud Profesional - CAP</option>
       </select>
       @if (registroForm.get('tipoCarnet')?.invalid && registroForm.get('tipoCarnet')?.touched) {
         <span class="validation-error">Elige un tipo de permiso.</span>
