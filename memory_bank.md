@@ -99,7 +99,12 @@ En esta sección guardaremos los prompts de sistema y de desarrollo más útiles
 * **Prompt Utilizado:**
   > "no hay una forma de que se envie al gmail normal?"
 
+### 8. Creación de apartado Conócenos
+* **Objetivo:** Crear un apartado sobre nosotros con valores, equipo, localización, redes y "trabaja con nosotros".
+* **Prompt Utilizado:**
+  > "haz un apartado que sea "conocenos" donde salgan los valores de la autoescuela, el equipo que trabaja en la oficina y los profesores, donde encontrarnos, redes sociales, y por ultimo el apartado de "trabaja con nosotros". Y el prompt lo guardas en memory_bank"
+
 ---
 
 ## 🗃️ Registro Cronológico de Sesiones
-* **2026-05-19 (Sesión actual):** Creación y preparación del `memory_bank.md`. Configuración final de credenciales Git. Implementación funcional del simulador de test (30 preguntas, estado dinámico, pantalla de resultados). Creación de la rama `feat-formulario` y desarrollo del componente de Registro con estética Glassmorphism. Integración del formulario reactivo en la Home y desarrollo de la conexión con un endpoint de Express y Nodemailer para el envío automático y seguro de correos de confirmación desde Gmail.
+* **2026-05-19 (Sesión actual):** Creación y preparación del `memory_bank.md`. Configuración final de credenciales Git. Implementación funcional del simulador de test (30 preguntas, estado dinámico, pantalla de resultados). Creación de la rama `feat-formulario` y desarrollo del componente de Registro con estética Glassmorphism. Integración del formulario reactivo en la Home y desarrollo de la conexión con un endpoint de Express y Nodemailer para el envío automático y seguro de correos de confirmación desde Gmail. Creación de la página 'Conócenos'.
