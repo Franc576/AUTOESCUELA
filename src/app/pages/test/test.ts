@@ -79,6 +79,10 @@ export class Test {
     return this.answeredCount - this.correctCount;
   }
 
+  get totalErrors(): number {
+    return 30 - this.correctCount;
+  }
+
   selectOption(optionIndex: number): void {
     if (this.showResults) return;
     this.answers[this.currentIndex] = optionIndex;

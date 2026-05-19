@@ -101,11 +101,11 @@
         </div>
       </div>
       
-      <div class="results-verdict" [ngClass]="errorsCount <= 3 ? 'verdict-pass' : 'verdict-fail'">
-        <h3 *ngIf="errorsCount <= 3">¡Apto!</h3>
-        <h3 *ngIf="errorsCount > 3">No Apto</h3>
-        <p *ngIf="errorsCount <= 3">Has superado el test con éxito. ¡Sigue así!</p>
-        <p *ngIf="errorsCount > 3">Has superado el límite de 3 fallos permitidos. Necesitas repasar.</p>
+      <div class="results-verdict" [ngClass]="totalErrors <= 3 ? 'verdict-pass' : 'verdict-fail'">
+        <h3 *ngIf="totalErrors <= 3">¡Apto!</h3>
+        <h3 *ngIf="totalErrors > 3">Suspendido</h3>
+        <p *ngIf="totalErrors <= 3">Has superado el test con éxito. ¡Sigue así!</p>
+        <p *ngIf="totalErrors > 3">Has superado el límite de 3 fallos permitidos. Necesitas repasar.</p>
       </div>
 
       <div class="results-actions">
