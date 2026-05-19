@@ -84,6 +84,10 @@ En esta sección guardaremos los prompts de sistema y de desarrollo más útiles
 * **Prompt/Comando utilizado:** "hazme un test simple de 30 preguntas"
 * **Objetivo:** Generar la lógica interactiva (`test.ts`) con 30 preguntas (Array), navegación dinámica, barra lateral de progreso, cálculo de aciertos/fallos y una pantalla de resultados detallada (`test.html`, `test.css`).
 
+### 5. Lógica de Suspenso en Test
+* **Prompt/Comando utilizado:** "tienes que cambiar del test, que salga suspendido si tiene mas de 3 fallos"
+* **Objetivo:** Ajustar el cálculo de errores (`test.ts`) para incluir como fallos aquellas preguntas no contestadas, de modo que refleje el funcionamiento real del examen de la DGT, y cambiar el texto final a "Suspendido".
+
 ---
 
 ## 🗃️ Registro Cronológico de Sesiones
