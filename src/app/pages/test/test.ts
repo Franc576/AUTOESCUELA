@@ -57,6 +57,25 @@ export class Test {
   currentIndex: number = 0;
   answers: (number | null)[] = Array(30).fill(null);
   showResults: boolean = false;
+
+  constructor() {
+    this.shuffleAllOptions();
+  }
+
+  shuffleAllOptions(): void {
+    this.questions.forEach(q => {
+      q.options = this.shuffleArray(q.options);
+    });
+  }
+
+  shuffleArray<T>(array: T[]): T[] {
+    const arr = [...array];
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  }
   
   get currentQuestion(): Question {
     return this.questions[this.currentIndex];
@@ -112,6 +131,7 @@ export class Test {
     this.currentIndex = 0;
     this.answers = Array(30).fill(null);
     this.showResults = false;
+    this.shuffleAllOptions();
   }
 
   isCorrect(qIndex: number): boolean {

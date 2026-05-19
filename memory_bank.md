@@ -99,7 +99,12 @@ En esta sección guardaremos los prompts de sistema y de desarrollo más útiles
 * **Prompt Utilizado:**
   > "no hay una forma de que se envie al gmail normal?"
 
+### 8. Aleatorización de Respuestas en Test
+* **Objetivo:** Evitar patrones predecibles en los tests de práctica (donde la respuesta correcta siempre estaba en la opción A) ordenando las respuestas de manera aleatoria al inicializar y reiniciar el test.
+* **Prompt Utilizado:**
+  > "vale, tenemos que modificar que en las respuestas me he fijado que colocas siempre la verdadera en la A, asi la gente aprende el patron y hace trampa. Cambialo, que sean aleatorias pero que las respuestas sean verdaderas"
+
 ---
 
 ## 🗃️ Registro Cronológico de Sesiones
-* **2026-05-19 (Sesión actual):** Creación y preparación del `memory_bank.md`. Configuración final de credenciales Git. Implementación funcional del simulador de test (30 preguntas, estado dinámico, pantalla de resultados). Creación de la rama `feat-formulario` y desarrollo del componente de Registro con estética Glassmorphism. Integración del formulario reactivo en la Home y desarrollo de la conexión con un endpoint de Express y Nodemailer para el envío automático y seguro de correos de confirmación desde Gmail.
+* **2026-05-19 (Sesión actual):** Creación y preparación del `memory_bank.md`. Configuración final de credenciales Git. Implementación funcional del simulador de test (30 preguntas, estado dinámico, pantalla de resultados). Creación de la rama `feat-formulario` y desarrollo del componente de Registro con estética Glassmorphism. Integración del formulario reactivo en la Home y desarrollo de la conexión con un endpoint de Express y Nodemailer para el envío automático y seguro de correos de confirmación desde Gmail. Modificación del componente de Test en la rama `test-pdf` para aleatorizar el orden de las opciones de respuesta y evitar el patrón predecible de que la opción correcta sea siempre la A.
