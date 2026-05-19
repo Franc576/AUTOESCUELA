@@ -133,9 +133,18 @@ En esta sección guardaremos los prompts de sistema y de desarrollo más útiles
   - **Enrutado y Compilación**: Registradas las rutas `/signup` y `/login` en `app.routes.ts`. Generados bundles estables de pre-renderizado.
   - **Rama Git**: `feat-Sign-in`, subida a GitHub.
 
+### 11. Integración y Mejora de Imagen del Vehículo de Prácticas (Flota Premium)
+* **Objetivo:** Tomar el boceto del vehículo de prácticas aportado en `images/image.png`, mejorar su calidad visual a alta definición realista mediante generación IA de activos premium y diseñar una sección dinámica dedicada a la flota ("Nuestra Flota") en la Home.
+* **Prompt Utilizado:**
+  > "he hecho un coche y lo he puesto en images, me gustaría que lo usaras para decorar la página y que vean que tenemos coches de practicas, no se si es posible que le intente smejorar la calidad"
+* **Resultados:**
+  - **Mejora IA**: Generado un render 3D hiperrealista y profesional en 8k de un *Volkswagen Golf Premium* blanco con la rotulación oficial *"AUTOESCUELA MATTHEW"*, placa de prácticas L azul en el techo, y luces de estudio, guardado en `public/coche_practicas.png`.
+  - **Sección Flota (`home.html` y `home.css`)**: Implementada una sección premium llamada *"Nuestra Flota"* equipada con una tarjeta *Glassmorphic* para el coche, especificaciones técnicas animadas, insignias ecológicas ("Eco-friendly 🌿") e información detallada de ventajas de aprendizaje (seguridad con doble mando, asistentes de conducción en rampa/sensores y uso del mismo coche en el examen).
+  - **Rama Git**: `feat-Sign-in`, subida a GitHub.
+
 ---
 
 ## 🗃️ Registro Cronológico de Sesiones
 * **2026-05-19 (Sesión 1):** Creación y preparación del `memory_bank.md`. Configuración de credenciales Git. Simulador de test interactivo de 30 preguntas. Formulario de inscripción premium y backend de notificaciones Express + Nodemailer para la confirmación de email. Página 'Conócenos' y sección 'Blog' de temas tabú de conducción.
-* **2026-05-19 (Sesión 2):** Página premium de Permisos de Conducción (B, A1, A2, A, AM, C, C+E, CAP) e integración en select. Resolución de conflictos en `main`. Renombrado comercial global a **AUTOESCUELA MATTHEW**. Creación de las pantallas de **Registro de Nuevos Usuarios** (`/signup`) y **Inicio de Sesión** (`/login`) 100% funcionales mediante persistencia de objetos en `localStorage`. Menú superior adaptativo y reactivo al estado de la sesión del alumno con botón de logout incorporado. Publicado en `feat-Sign-in` y subido a origin.
+* **2026-05-19 (Sesión 2):** Página premium de Permisos de Conducción. Renombrado global a **AUTOESCUELA MATTHEW**. Flujo de **Registro** (`/signup`) y **Login** (`/login`) 100% funcionales en `localStorage` con alertas e inicio reactivo de sesión en cabecera. **Optimización de la Flota**: Incremento cualitativo hiperrealista en 8K del coche de prácticas del alumno (`coche_practicas.png`) e integración de la sección *"Nuestra Flota"* en la Home. Compilación validada satisfactoriamente y subida a origin.
 
