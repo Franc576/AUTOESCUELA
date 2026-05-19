@@ -1,0 +1,81 @@
+<div class="blog-container">
+  <header class="hero-section">
+    <h1>El Blog de la Autoescuela</h1>
+    <p>Desmontamos mitos, resolvemos tabús y te damos las claves para ser el mejor conductor.</p>
+  </header>
+
+  @if (!selectedArticle()) {
+    <!-- Vista Grid de Articulos -->
+    <div class="articles-grid">
+      @for (article of articles; track article.id) {
+        <article class="article-card glass-panel" (click)="selectArticle(article)">
+          <div class="article-badge">{{ article.category }}</div>
+          <div class="article-header">
+            <div class="article-icon">
+              @if (article.icon === 'droplet') {
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a7 7 0 0 0 7-7c0-4.3-7-11-7-11S5 10.7 5 15a7 7 0 0 0 7 7z"/></svg>
+              } @else if (article.icon === 'snowflake') {
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="2" y1="12" x2="22" y2="12"/><line x1="12" y1="2" x2="12" y2="22"/><path d="m20 16-4-4 4-4"/><path d="m4 8 4 4-4 4"/><path d="m16 4-4 4-4-4"/><path d="m8 20 4-4 4 4"/></svg>
+              } @else if (article.icon === 'activity') {
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+              } @else if (article.icon === 'shield') {
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              } @else if (article.icon === 'wind') {
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"/></svg>
+              } @else if (article.icon === 'refresh-cw') {
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+              }
+            </div>
+            <span class="read-time">{{ article.readTime }} de lectura</span>
+          </div>
+          <h3>{{ article.title }}</h3>
+          <p class="summary">{{ article.summary }}</p>
+          <div class="read-more">
+            <span>Leer artículo completo</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
+        </article>
+      }
+    </div>
+  } @else {
+    <!-- Vista Detalle de Articulo -->
+    <div class="article-detail glass-panel">
+      <button class="btn-back" (click)="closeArticle()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        <span>Volver al blog</span>
+      </button>
+
+      <div class="detail-header">
+        <span class="detail-category">{{ selectedArticle()?.category }}</span>
+        <h1>{{ selectedArticle()?.title }}</h1>
+        <div class="detail-meta">
+          <span class="read-time">{{ selectedArticle()?.readTime }} de lectura</span>
+        </div>
+      </div>
+
+      <div class="detail-body">
+        <p class="introduction">{{ selectedArticle()?.content?.introduction }}</p>
+
+        <div class="sections-container">
+          @for (sec of selectedArticle()?.content?.sections; track sec.title) {
+            <section class="content-section">
+              <h2>{{ sec.title }}</h2>
+              <p>{{ sec.text }}</p>
+            </section>
+          }
+        </div>
+
+        <div class="keys-box">
+          <h3>💡 Puntos Clave y Consejos Rápidos</h3>
+          <ul>
+            @for (key of selectedArticle()?.content?.keys; track key) {
+              <li>{{ key }}</li>
+            }
+          </ul>
+        </div>
+
+        <p class="conclusion">{{ selectedArticle()?.content?.conclusion }}</p>
+      </div>
+    </div>
+  }
+</div>
