@@ -1,11 +1,11 @@
-# 🧠 Autoescuela SJO - Memory Bank
+# 🧠 Autoescuela Matthew - Memory Bank
 
 Este archivo es nuestro **banco de memoria y registro de progreso**. Sirve para mantener el contexto del proyecto, las decisiones de arquitectura, los prompts clave utilizados, y el estado de las tareas para que cualquier sesión de desarrollo sea fluida y estructurada.
 
 ---
 
 ## 📋 Visión General del Proyecto
-**Autoescuela SJO** es una aplicación web moderna orientada a la gestión y aprendizaje para estudiantes de autoescuela. El objetivo es ofrecer una experiencia premium con una interfaz fluida, interactiva, con soporte nativo de **Dark Mode (Tema Oscuro)** y alto rendimiento.
+**Autoescuela Matthew** es una aplicación web moderna orientada a la gestión y aprendizaje para estudiantes de autoescuela. El objetivo es ofrecer una experiencia premium con una interfaz fluida, interactiva, con soporte nativo de **Dark Mode (Tema Oscuro)** y alto rendimiento.
 
 ### 🛠️ Pila Tecnológica
 - **Framework:** Angular 18+ (Standalone Components, Signals, nuevo flujo de control `@if`/`@for`).
