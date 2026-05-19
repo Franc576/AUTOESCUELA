@@ -1,0 +1,130 @@
+/* Contenedor principal: Efecto Glassmorphism oscuro y sombras suaves */
+.form-container {
+  max-width: 450px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background: rgba(15, 23, 42, 0.7); /* slate-900 translúcido */
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(12px); /* Desenfoque estilo iOS/Mac */
+  color: #fff;
+}
+
+/* Tipografía de cabeceras */
+.form-header h2 {
+  margin-top: 0;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #f1f5f9; /* slate-100 */
+}
+
+.form-header p {
+  font-size: 0.95rem;
+  color: #94a3b8; /* slate-400 */
+  margin-bottom: 2rem;
+}
+
+/* Espaciado de cada campo */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.25rem;
+}
+
+.form-group label {
+  font-size: 0.85rem;
+  margin-bottom: 0.4rem;
+  color: #cbd5e1; /* slate-300 */
+  font-weight: 500;
+}
+
+/* Estilos de las cajas de texto y el desplegable */
+.form-group input,
+.form-group select {
+  padding: 0.85rem;
+  background: rgba(30, 41, 59, 0.8); /* slate-800 oscuro */
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  color: #f8fafc;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+/* placeholder de los inputs */
+.form-group input::placeholder {
+  color: #475569; /* slate-600 */
+}
+
+/* Efecto al enfocar un input o el select (anillo azul eléctrico) */
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #38bdf8; /* sky-400 */
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
+}
+
+/* Botón Premium: Gradiente y micro-animación en Hover */
+.btn-submit {
+  width: 100%;
+  padding: 1rem;
+  margin-top: 1rem;
+  background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%); /* Gradiente azul */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-submit:hover {
+  transform: translateY(-2px); /* Se eleva un poco al pasar el ratón */
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4); /* Resplandor exterior */
+}
+
+/* Deshabilitados durante envío o invalidación */
+input[disabled], select[disabled], button[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed !important;
+}
+
+button[disabled] {
+  background: #334155; /* slate-700 */
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+/* Errores de validación */
+.validation-error {
+  font-size: 0.75rem;
+  color: #f87171; /* red-400 */
+  margin-top: 0.35rem;
+  padding-left: 0.2rem;
+  font-weight: 500;
+}
+
+/* Alertas de Notificación */
+.alert {
+  padding: 0.85rem 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+
+.alert-success {
+  background: rgba(16, 185, 129, 0.15); /* Emerald transparency */
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: #34d399; /* emerald-400 */
+}
+
+.alert-danger {
+  background: rgba(239, 68, 68, 0.15); /* Red transparency */
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #f87171; /* red-400 */
+}
+
