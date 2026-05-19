@@ -24,6 +24,7 @@ src/app/
 │   └── navbar/          # Barra de navegación principal
 └── pages/
     ├── home/            # Página de inicio / Dashboard principal
+    ├── registro/        # Formulario de registro para nuevos alumnos
     ├── reservas/        # Sistema de reserva de clases prácticas
     └── test/            # Plataforma de realización de test teóricos
 ```
@@ -80,7 +81,19 @@ En esta sección guardaremos los prompts de sistema y de desarrollo más útiles
     }
     ```
 
+### 4. Creación del Formulario de Registro (Premium Dark Mode)
+* **Objetivo:** Crear un formulario de registro de alumnos con estética Glassmorphism, validaciones básicas y desplegable de carnets.
+* **Prompt Utilizado:**
+  > "Estoy en mi rama de trabajo creando un formulario de registro para los alumnos de la autoescuela en Angular. Necesito el código HTML (.html) para un formulario limpio que pida: Nombre completo, Correo electrónico, Teléfono y un desplegable (select) para elegir el tipo de carnet en España (opciones: Coche - Permiso B, Moto - Permiso A2/A, Ciclomotor - Permiso AM). Añade un botón que diga 'Solicitar información' y coméntame cada bloque de código."
+
+### 5. Envío Automático de Email de Confirmación (Express + Nodemailer)
+* **Objetivo:** Enviar un correo de confirmación de registro a la dirección introducida por el usuario de forma totalmente automática utilizando un servidor backend de Express integrado con Nodemailer y conectado directamente con la cuenta de Gmail del administrador, garantizando seguridad máxima y evitando servicios de terceros.
+* **Prompt Utilizado:**
+  > "no hay una forma de que se envie al gmail normal?"
+
 ---
 
 ## 🗃️ Registro Cronológico de Sesiones
-* **2026-05-19 (Sesión actual):** Creación y preparación del `memory_bank.md` para el control y seguimiento del progreso de desarrollo. Configuración final de credenciales Git.
+* **2026-05-19 (Sesión actual):** Creación y preparación del `memory_bank.md`. Configuración final de credenciales Git. Creación de la rama `feat-formulario` y desarrollo del componente de Registro con estética Glassmorphism. Integración del formulario reactivo en la Home y desarrollo de la conexión con un endpoint de Express y Nodemailer para el envío automático y seguro de correos de confirmación desde Gmail.
+
+

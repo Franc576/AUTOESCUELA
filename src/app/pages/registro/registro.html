@@ -1,0 +1,102 @@
+<!-- Contenedor principal del formulario con estilo de tarjeta oscura (Dark Mode Premium) -->
+<div class="form-container">
+  
+  <!-- Encabezado del formulario -->
+  <div class="form-header">
+    <h2>Únete a nuestra Autoescuela</h2>
+    <p>Rellena tus datos y da el primer paso hacia tu carnet.</p>
+  </div>
+
+  <!-- Alertas de éxito y error con la sintaxis moderna @if de Angular 18 -->
+  @if (mensajeExito()) {
+    <div class="alert alert-success">
+      {{ mensajeExito() }}
+    </div>
+  }
+
+  @if (mensajeError()) {
+    <div class="alert alert-danger">
+      {{ mensajeError() }}
+    </div>
+  }
+
+  <!-- Enlace al formulario reactivo [formGroup] y capturador de submit (ngSubmit) -->
+  <form [formGroup]="registroForm" (ngSubmit)="onSubmit()" class="registro-form">
+
+    <!-- Bloque 1: Nombre Completo -->
+    <div class="form-group">
+      <label for="nombre">Nombre completo</label>
+      <input 
+        type="text" 
+        id="nombre" 
+        formControlName="nombre"
+        placeholder="Ej: Laura Gómez" 
+        [attr.disabled]="enviando() ? true : null"
+      >
+      <!-- Feedback de validación de error -->
+      @if (registroForm.get('nombre')?.invalid && registroForm.get('nombre')?.touched) {
+        <span class="validation-error">El nombre es requerido (mínimo 3 letras).</span>
+      }
+    </div>
+
+    <!-- Bloque 2: Correo Electrónico -->
+    <div class="form-group">
+      <label for="email">Correo electrónico</label>
+      <input 
+        type="email" 
+        id="email" 
+        formControlName="email"
+        placeholder="Ej: laura@email.com" 
+        [attr.disabled]="enviando() ? true : null"
+      >
+      @if (registroForm.get('email')?.invalid && registroForm.get('email')?.touched) {
+        <span class="validation-error">Por favor, introduce un correo electrónico válido.</span>
+      }
+    </div>
+
+    <!-- Bloque 3: Teléfono -->
+    <div class="form-group">
+      <label for="telefono">Teléfono</label>
+      <input 
+        type="tel" 
+        id="telefono" 
+        formControlName="telefono"
+        placeholder="Ej: 600123456" 
+        [attr.disabled]="enviando() ? true : null"
+      >
+      @if (registroForm.get('telefono')?.invalid && registroForm.get('telefono')?.touched) {
+        <span class="validation-error">Introduce un número de teléfono válido en España (9 dígitos).</span>
+      }
+    </div>
+
+    <!-- Bloque 4: Desplegable (Select) Tipo de Carnet en España -->
+    <div class="form-group">
+      <label for="tipoCarnet">¿Qué carnet deseas obtener?</label>
+      <select 
+        id="tipoCarnet" 
+        formControlName="tipoCarnet"
+        [attr.disabled]="enviando() ? true : null"
+      >
+        <option value="" disabled selected>Selecciona un permiso...</option>
+        <option value="coche_B">Coche - Permiso B</option>
+        <option value="moto_A">Moto - Permiso A2/A</option>
+        <option value="ciclomotor_AM">Ciclomotor - Permiso AM</option>
+      </select>
+      @if (registroForm.get('tipoCarnet')?.invalid && registroForm.get('tipoCarnet')?.touched) {
+        <span class="validation-error">Elige un tipo de permiso.</span>
+      }
+    </div>
+
+    <!-- Bloque 5: Botón de envío (Se deshabilita mientras se envía) -->
+    <div class="form-actions">
+      <button type="submit" class="btn-submit" [disabled]="enviando() || registroForm.invalid">
+        @if (enviando()) {
+          Enviando solicitud...
+        } @else {
+          Solicitar información
+        }
+      </button>
+    </div>
+
+  </form>
+</div>
