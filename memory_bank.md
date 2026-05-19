@@ -121,22 +121,21 @@ En esta sección guardaremos los prompts de sistema y de desarrollo más útiles
 * **Prompt Utilizado:**
   > "vamos a hacer otra seccion que se llame "blog" ahi resolveremos los temas mas tabus sobre la conduccion: que hacer si te equivocas y echas diesel en vez de gasolina, claves para conducir en invierno, superar el miedo a conducir, llevar mascotas en el coche... pon mas ejemplos, y en cada titular si clicas un articulo que te de consejos y claves, informacion y demas. y el prompt lo guardas en memory_bank"
 
-### 10. Creación de la Pantalla de Registro de Nuevos Usuarios (Signup)
-* **Objetivo:** Crear una página de registro de cuenta premium, centrada en pantalla, con estilo glassmorphic coherente con el resto de la app. Pide nombre de usuario, correo, contraseña con validación de fortaleza (mínimo 8 chars, 1 mayúscula, 1 número), y checkbox de términos con su validación.
+### 10. Creación y Conexión de la Pantalla de Registro y Login (localStorage)
+* **Objetivo:** Crear un flujo funcional real de Registro y Login en el navegador del cliente utilizando `localStorage`, con validación cruzada de credenciales y cabecera reactiva.
 * **Prompt Utilizado:**
-  > "Estoy en mi proyecto de autoescuela en Angular y quiero crear la pantalla de Registro de Nuevos Usuarios. Necesito el código HTML (.html) y CSS (.css) para un formulario moderno y centrado en la pantalla. Debe pedir: Nombre de usuario, Correo electrónico, Contraseña (tipo password) y una casilla (checkbox) para aceptar los términos y condiciones. Añade validaciones visuales básicas y un botón llamativo que diga 'Crear mi cuenta 🚗'. Coméntame el código para entenderlo."
+  > "Quiero que conectes el formulario de registro y el de inicio de sesión de mi autoescuela para que funcionen de verdad utilizando localStorage. Modifica los archivos HTML y TypeScript (.ts) necesarios para que: 1) Al registrarse, los datos se guarden de forma segura en la memoria del navegador y avise con un alert. 2) Al iniciar sesión, compruebe si el usuario y la contraseña coinciden con lo guardado y le dé la bienvenida. Haz los cambios directamente en los archivos correspondientes."
 * **Resultados:**
-  - **Componente `Signup`**: Creado en `src/app/pages/signup` como componente *standalone* Angular.
-  - **Validador personalizado**: `passwordStrengthValidator` con checks de longitud, mayúscula y número implementados como `ValidationErrors` de Angular.
-  - **Getters de fortaleza**: `pwHasMinLength`, `pwHasUpperCase`, `pwHasNumber` en la clase TS para evitar expresiones complejas en la plantilla.
-  - **Toggle de contraseña**: Botón de ojo para alternar visibilidad del campo password con `Signal` reactivo.
-  - **Checkbox estilizado**: CSS personalizado sobre el input nativo con efecto de check dorado.
-  - **Integración**: Ruta `/signup` registrada en `app.routes.ts`. Navbar actualizada: botón "Crear cuenta" como enlace directo a la nueva página.
+  - **Componente `Signup`**: Creado y modificado para verificar usuarios duplicados y persistir objetos JSON en la clave `autoescuela_users` de `localStorage`.
+  - **Componente `Login`**: Creado en `src/app/pages/login` con formulario reactivo. Busca credenciales por usuario/correo y contraseña contra la lista persistida.
+  - **Validaciones de Seguridad & Alertas**: Avisos `alert()` interactivos del navegador tanto al completar el registro como al iniciar sesión con éxito.
+  - **Cabecera Reactiva (`Navbar`)**: Modificada para escuchar el estado de la sesión (`autoescuela_session`). Muestra dinámicamente un mensaje de *"¡Hola, [Usuario]! 👋"* y un botón estilizado para cerrar sesión (`logout()`), ocultando los accesos a formularios.
+  - **Enrutado y Compilación**: Registradas las rutas `/signup` y `/login` en `app.routes.ts`. Generados bundles estables de pre-renderizado.
   - **Rama Git**: `feat-Sign-in`, subida a GitHub.
 
 ---
 
 ## 🗃️ Registro Cronológico de Sesiones
-* **2026-05-19 (Sesión 1):** Creación y preparación del `memory_bank.md`. Configuración final de credenciales Git. Implementación funcional del simulador de test. Creación de la rama `feat-formulario` y el formulario de solicitud de información con Glassmorphism. Integración con backend Express + Nodemailer para envío de emails. Creación de la página 'Conócenos'. Sección interactiva 'Blog' con artículos sobre tábues de conducción.
-* **2026-05-19 (Sesión 2):** Página premium de Permisos de Conducción (B, A1, A2, A, AM, C, C+E, CAP) con Signals, glassmorphism y línea de tiempo de exámenes. Actualización del formulario de solicitud con los 8 permisos. Resolución de conflictos de merge con `main` (fetch-permisos). Renombrado del branding a **AUTOESCUELA MATTHEW** en todos los ficheros (navbar, index.html, server.ts, app.ts). Creación de la pantalla de **Registro de Nuevos Usuarios** (`/signup`) con validador de contraseña personalizado, toggle de visibilidad, checkbox estilizado y botón premium. Publicada en rama `feat-Sign-in` y subida a GitHub.
+* **2026-05-19 (Sesión 1):** Creación y preparación del `memory_bank.md`. Configuración de credenciales Git. Simulador de test interactivo de 30 preguntas. Formulario de inscripción premium y backend de notificaciones Express + Nodemailer para la confirmación de email. Página 'Conócenos' y sección 'Blog' de temas tabú de conducción.
+* **2026-05-19 (Sesión 2):** Página premium de Permisos de Conducción (B, A1, A2, A, AM, C, C+E, CAP) e integración en select. Resolución de conflictos en `main`. Renombrado comercial global a **AUTOESCUELA MATTHEW**. Creación de las pantallas de **Registro de Nuevos Usuarios** (`/signup`) y **Inicio de Sesión** (`/login`) 100% funcionales mediante persistencia de objetos en `localStorage`. Menú superior adaptativo y reactivo al estado de la sesión del alumno con botón de logout incorporado. Publicado en `feat-Sign-in` y subido a origin.
 
