@@ -1,1 +1,114 @@
-<p>home works!</p>
+<div class="home-container">
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <span class="hero-badge">Tu carnet de conducir a la primera</span>
+      <h1 class="hero-title">Aprende con los mejores. <br><span class="highlight-text">Conduce con confianza.</span></h1>
+      <p class="hero-subtitle">
+        Te preparamos para superar tu examen teórico y práctico con instructores profesionales, simuladores avanzados y un método flexible adaptado a tu ritmo de vida.
+      </p>
+      
+      <div class="hero-actions">
+        <a routerLink="/reservas" class="btn btn-primary">
+          <span>Comenzar Prácticas</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+        <a routerLink="/test" class="btn btn-secondary">
+          <span>Hacer Test Gratis</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Visual Dashboard Speedometer -->
+    <div class="hero-graphic">
+      <div class="dashboard-card">
+        <div class="speedometer-container">
+          <div class="speed-ring">
+            <svg class="progress-ring" width="220" height="220">
+              <circle class="progress-ring__bg" stroke="rgba(255,255,255,0.05)" stroke-width="8" fill="transparent" r="95" cx="110" cy="110"/>
+              <circle class="progress-ring__bar" stroke="var(--color-primary)" stroke-width="12" stroke-dasharray="596" stroke-dashoffset="150" fill="transparent" r="95" cx="110" cy="110"/>
+            </svg>
+            <div class="speed-value">
+              <span class="number">120</span>
+              <span class="unit">km/h</span>
+            </div>
+            <div class="speed-needle"></div>
+          </div>
+          <div class="dashboard-stats">
+            <div class="stat-small">
+              <span class="label">MODO</span>
+              <span class="val cyan">SPORT</span>
+            </div>
+            <div class="stat-small">
+              <span class="label">GEAR</span>
+              <span class="val primary">D5</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Grid -->
+  <section class="stats-section">
+    <div class="stat-card">
+      <div class="stat-num">98%</div>
+      <div class="stat-label">Aprobados teórica primera convocatoria</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">15+</div>
+      <div class="stat-label">Vehículos e instructores de primer nivel</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">2K+</div>
+      <div class="stat-label">Alumnos ya conducen con nosotros</div>
+    </div>
+  </section>
+
+  <!-- Features/Benefits Section -->
+  <section class="features-section">
+    <div class="section-header">
+      <h2 class="section-title">¿Por qué elegirnos?</h2>
+      <p class="section-subtitle">Diseñamos una experiencia de aprendizaje premium para que saques tu carnet sin complicaciones.</p>
+    </div>
+
+    <div class="features-grid">
+      <!-- Card 1 -->
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+            <line x1="8" y1="21" x2="16" y2="21"/>
+            <line x1="12" y1="17" x2="12" y2="21"/>
+          </svg>
+        </div>
+        <h3 class="feature-name">Teórica 100% Online</h3>
+        <p class="feature-desc">Accede a clases en directo o grabadas, tests oficiales actualizados y material multimedia desde tu móvil u ordenador las 24 horas.</p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+          </svg>
+        </div>
+        <h3 class="feature-name">Clases Prácticas Flexibles</h3>
+        <p class="feature-desc">Reserva tus prácticas con facilidad desde el portal de alumnos. Te recogemos en puntos estratégicos y tú eliges el horario.</p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+            <line x1="12" y1="22.08" x2="12" y2="12"/>
+          </svg>
+        </div>
+        <h3 class="feature-name">Simulador de Conducción</h3>
+        <p class="feature-desc">Gana seguridad antes de salir a la calle practicando situaciones complejas de tráfico y climatología en nuestro simulador inmersivo.</p>
+      </div>
+    </div>
+  </section>
+</div>
