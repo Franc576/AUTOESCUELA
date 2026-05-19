@@ -1,0 +1,86 @@
+# 🧠 Autoescuela SJO - Memory Bank
+
+Este archivo es nuestro **banco de memoria y registro de progreso**. Sirve para mantener el contexto del proyecto, las decisiones de arquitectura, los prompts clave utilizados, y el estado de las tareas para que cualquier sesión de desarrollo sea fluida y estructurada.
+
+---
+
+## 📋 Visión General del Proyecto
+**Autoescuela SJO** es una aplicación web moderna orientada a la gestión y aprendizaje para estudiantes de autoescuela. El objetivo es ofrecer una experiencia premium con una interfaz fluida, interactiva, con soporte nativo de **Dark Mode (Tema Oscuro)** y alto rendimiento.
+
+### 🛠️ Pila Tecnológica
+- **Framework:** Angular 18+ (Standalone Components, Signals, nuevo flujo de control `@if`/`@for`).
+- **Diseño & Estilos:** CSS moderno / Flexbox y CSS Grid.
+- **Estado Global/Local:** Angular Signals para reactividad de alto rendimiento.
+- **Control de Versiones:** Git (GitHub: `https://github.com/Franc576/AUTOESCUELA.git`).
+
+---
+
+## 🗺️ Estructura del Proyecto (Mapa de Componentes)
+La estructura modular actual de la aplicación se distribuye de la siguiente forma dentro de `autoescuela_sjo/src/app`:
+
+```
+src/app/
+├── components/
+│   └── navbar/          # Barra de navegación principal
+└── pages/
+    ├── home/            # Página de inicio / Dashboard principal
+    ├── reservas/        # Sistema de reserva de clases prácticas
+    └── test/            # Plataforma de realización de test teóricos
+```
+
+---
+
+## 🚀 Estado Actual y Progreso
+- [x] **Creación de la base de Angular:** Proyecto Angular estructurado con enrutamiento básico.
+- [x] **Creación de componentes clave:** Navbar y páginas (`home`, `reservas`, `test`) creados en formato Standalone.
+- [ ] **Configuración e inicialización de Git:** Repositorio enlazado a GitHub (`origin`), pendiente del primer commit y push.
+- [ ] **Diseño visual premium:** Aplicar rediseño de interfaz en modo oscuro moderno (estética premium, gradientes suaves, microanimaciones).
+- [ ] **Lógica de Tests:** Implementación del sistema de preguntas/respuestas interactivo en la sección de test.
+- [ ] **Lógica de Reservas:** Sistema interactivo para reservar clases con calendario visual.
+
+---
+
+## 📝 Registro de Prompts y Progreso
+
+En esta sección guardaremos los prompts de sistema y de desarrollo más útiles que vayamos utilizando para avanzar de manera consistente.
+
+### 1. Inicialización y Conexión con GitHub
+* **Objetivo:** Vincular el proyecto local y subir los archivos por primera vez.
+* **Prompt/Comandos de referencia:**
+  ```bash
+  git config --global user.name "Franc576"
+  git config --global user.email "fjfernandezf68@alumnes.santjosepobrer.es"
+  git add .
+  git commit -m "Primer commit: Estructura inicial de la Autoescuela con Angular"
+  git push -u origin main
+  ```
+
+### 2. Estándar de Diseño Premium (Dark Mode)
+* **Objetivo:** Mantener una estética moderna, limpia y de lujo.
+* **Instrucciones clave de diseño:**
+  - **Fondo principal:** Tonos oscuros profundos (ej. `#0f172a` slate-900, `#0b0f19`).
+  - **Colores de Acento:** Gradientes suaves y colores neón elegantes (ej. cian, violeta eléctrico o verde esmeralda para éxitos).
+  - **Tipografía:** Inter o Roboto.
+  - **Efectos:** Glassmorphism (`backdrop-filter: blur()`), bordes sutiles de `1px` semi-transparentes y sombras difuminadas.
+  - **Micro-animaciones:** Transiciones suaves de `0.3s ease` en hovers, clicks y navegación.
+
+### 3. Principios de Angular 18+ a Seguir
+* **Objetivo:** Escribir código moderno y eficiente.
+* **Reglas de código:**
+  - Evitar `NgModule`. Todos los componentes deben ser `standalone: true`.
+  - Usar **Signals** (`signal()`, `computed()`, `effect()`) para el manejo del estado local en lugar de variables estándar siempre que sea posible.
+  - Utilizar la sintaxis nativa de Angular 18+ para el flujo de control en las plantillas HTML:
+    ```html
+    @if (loading()) {
+      <p>Cargando...</p>
+    } @else {
+      @for (item of items(); track item.id) {
+        <div>{{ item.name }}</div>
+      }
+    }
+    ```
+
+---
+
+## 🗃️ Registro Cronológico de Sesiones
+* **2026-05-19 (Sesión actual):** Creación y preparación del `memory_bank.md` para el control y seguimiento del progreso de desarrollo. Configuración final de credenciales Git.
