@@ -1,0 +1,440 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   SIGNUP PAGE — AUTOESCUELA MATTHEW
+   Diseño: pantalla completa centrada, tarjeta glassmorphic, animaciones suaves
+   Paleta: coherente con styles.css del proyecto (fondo #0a0b10, gold #ffb703)
+════════════════════════════════════════════════════════════════════════════ */
+
+/* ── 1. CONTENEDOR FULL-SCREEN ──────────────────────────────────────────── */
+.signup-page {
+  /* Ocupa toda la pantalla disponible bajo el navbar */
+  min-height: calc(100vh - 80px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── 2. FONDO DECORATIVO: Gradiente radial animado ─────────────────────── */
+/* Crea una "mancha" de luz dorada/ámbar detrás de la tarjeta */
+.bg-glow {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 40%, rgba(255, 183, 3, 0.07) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 80%, rgba(0, 180, 216, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── 3. TARJETA GLASSMORPHIC ────────────────────────────────────────────── */
+.signup-card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 460px;
+  background: rgba(18, 20, 32, 0.75);        /* Fondo semitransparente oscuro */
+  border: 1px solid rgba(255, 255, 255, 0.07);/* Borde sutil */
+  border-radius: 20px;
+  padding: 2.5rem 2.5rem 2rem;
+  backdrop-filter: blur(16px);               /* Efecto cristal esmerilado */
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow:
+    0 25px 50px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 183, 3, 0.04);       /* Micro-borde dorado */
+  animation: cardEntrance 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Entrada suave de la tarjeta al cargar la página */
+@keyframes cardEntrance {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── 4. CABECERA DE LA TARJETA ──────────────────────────────────────────── */
+.card-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* Icono central con fondo dorado */
+.logo-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(255, 183, 3, 0.2), rgba(251, 133, 0, 0.1));
+  border: 1px solid rgba(255, 183, 3, 0.25);
+  color: var(--color-primary);
+  margin-bottom: 1.25rem;
+  box-shadow: 0 0 20px rgba(255, 183, 3, 0.1);
+}
+
+.logo-icon svg {
+  width: 32px;
+  height: 32px;
+}
+
+/* Título principal H1 */
+.card-title {
+  font-size: 1.75rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--text-main);
+  margin: 0 0 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+/* Subtítulo descriptivo */
+.card-subtitle {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.card-subtitle strong {
+  color: var(--color-primary);
+}
+
+/* ── 5. ALERTAS ─────────────────────────────────────────────────────────── */
+.alert {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1rem;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  animation: fadeIn 0.3s ease;
+}
+
+.alert-success {
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  color: #34d399;
+}
+
+.alert-error {
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  color: #f87171;
+}
+
+/* ── 6. GRUPOS DE CAMPO ─────────────────────────────────────────────────── */
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+/* Etiqueta con icono inline */
+.form-label {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #cbd5e1;
+  letter-spacing: 0.01em;
+}
+
+.form-label svg {
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+/* ── 7. INPUTS ──────────────────────────────────────────────────────────── */
+/* Envuelve el input para posicionar íconos encima */
+.input-wrapper {
+  position: relative;
+}
+
+.input-wrapper input {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 10px;
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+  outline: none;
+  box-sizing: border-box;
+}
+
+/* Placeholder más discreto */
+.input-wrapper input::placeholder {
+  color: #3d4a5c;
+  font-size: 0.88rem;
+}
+
+/* Focus: anillo dorado */
+.input-wrapper input:focus {
+  border-color: var(--color-primary);
+  background: rgba(255, 183, 3, 0.03);
+  box-shadow: 0 0 0 3px rgba(255, 183, 3, 0.12);
+}
+
+/* Estado de error en el campo */
+.input-wrapper.has-error input {
+  border-color: #f87171;
+  box-shadow: 0 0 0 3px rgba(248, 113, 113, 0.1);
+}
+
+/* ── 8. CAMPO DE CONTRASEÑA CON TOGGLE ──────────────────────────────────── */
+.password-wrapper input {
+  /* Espacio a la derecha para el botón del ojo */
+  padding-right: 2.8rem;
+}
+
+/* Botón para mostrar/ocultar contraseña */
+.toggle-password {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s ease;
+  border-radius: 4px;
+}
+
+.toggle-password:hover {
+  color: var(--color-primary);
+}
+
+/* ── 9. INDICADORES DE FORTALEZA DE CONTRASEÑA ──────────────────────────── */
+.password-hints {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  margin-top: 0.35rem;
+}
+
+/* Cada pista individual (por defecto en rojo apagado) */
+.password-hints span {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.75rem;
+  color: #f87171; /* rojo = requisito no cumplido */
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+/* Cuando el requisito SÍ se cumple, se pone verde */
+.password-hints span.valid {
+  color: #34d399;
+}
+
+/* ── 10. CHECKBOX DE TÉRMINOS ────────────────────────────────────────────── */
+.checkbox-group {
+  margin-top: 0.25rem;
+}
+
+/* Envoltorio clickeable de la fila completa */
+.checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  cursor: pointer;
+  line-height: 1.5;
+}
+
+/* Escondemos el input nativo para usar uno estilizado */
+.checkbox-label input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Cuadradito personalizado */
+.checkbox-custom {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.03);
+  margin-top: 2px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Cuando el checkbox está marcado: fondo dorado + check */
+.checkbox-label input:checked ~ .checkbox-custom {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.checkbox-label input:checked ~ .checkbox-custom::after {
+  content: '';
+  width: 5px;
+  height: 9px;
+  border: 2px solid #0a0b10;
+  border-top: none;
+  border-left: none;
+  transform: rotate(45deg) translate(-1px, -1px);
+  display: block;
+}
+
+/* Focus accesible con teclado */
+.checkbox-label input:focus-visible ~ .checkbox-custom {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Estado de error del checkbox */
+.checkbox-group.has-error .checkbox-custom {
+  border-color: #f87171;
+}
+
+.checkbox-text {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+/* Links de Términos y Privacidad */
+.terms-link {
+  color: var(--color-primary);
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.terms-link:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+/* ── 11. MENSAJE DE ERROR DE VALIDACIÓN ─────────────────────────────────── */
+.validation-error {
+  font-size: 0.75rem;
+  color: #f87171;
+  font-weight: 500;
+  padding-left: 0.1rem;
+  animation: fadeIn 0.2s ease;
+}
+
+/* ── 12. BOTÓN DE ENVÍO ─────────────────────────────────────────────────── */
+.btn-submit {
+  /* Ocupa todo el ancho disponible */
+  width: 100%;
+  padding: 1rem 1.5rem;
+  margin-top: 0.5rem;
+  /* Gradiente de llamada a la acción: dorado → ámbar */
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+  color: #0a0b10;  /* Texto oscuro sobre fondo claro */
+  border: none;
+  border-radius: 10px;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+  box-shadow: 0 4px 15px rgba(255, 183, 3, 0.3);
+}
+
+/* Elevación sutil al pasar el ratón */
+.btn-submit:hover:not([disabled]) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 183, 3, 0.45);
+}
+
+/* Click: se "hunde" momentáneamente */
+.btn-submit:active:not([disabled]) {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(255, 183, 3, 0.25);
+}
+
+/* Estado deshabilitado mientras se envía */
+.btn-submit[disabled] {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Estado de carga: fondo más apagado */
+.btn-submit.loading {
+  background: linear-gradient(135deg, #b07d00, #c05500);
+}
+
+/* ── 13. SPINNER DE CARGA ───────────────────────────────────────────────── */
+.spinner {
+  animation: spin 0.8s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ── 14. PIE DE TARJETA ─────────────────────────────────────────────────── */
+.signup-footer {
+  text-align: center;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin: 1.5rem 0 0;
+}
+
+.footer-link {
+  color: var(--color-primary);
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.footer-link:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+/* ── 15. UTILIDADES ─────────────────────────────────────────────────────── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── 16. RESPONSIVE ─────────────────────────────────────────────────────── */
+@media (max-width: 520px) {
+  .signup-card {
+    padding: 2rem 1.5rem 1.5rem;
+    border-radius: 16px;
+  }
+
+  .card-title {
+    font-size: 1.5rem;
+  }
+
+  .password-hints {
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+}

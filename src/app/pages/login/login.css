@@ -1,0 +1,310 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   LOGIN PAGE — AUTOESCUELA MATTHEW
+   Misma estética glassmorphic que la página de Signup para coherencia visual.
+════════════════════════════════════════════════════════════════════════════ */
+
+/* ── 1. CONTENEDOR FULL-SCREEN ──────────────────────────────────────────── */
+.login-page {
+  min-height: calc(100vh - 80px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── 2. FONDO DECORATIVO ────────────────────────────────────────────────── */
+.bg-glow {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 40%, rgba(0, 180, 216, 0.07) 0%, transparent 60%),
+    radial-gradient(ellipse at 20% 80%, rgba(255, 183, 3, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── 3. TARJETA GLASSMORPHIC ────────────────────────────────────────────── */
+.login-card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 440px;
+  background: rgba(18, 20, 32, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 20px;
+  padding: 2.5rem 2.5rem 2rem;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow:
+    0 25px 50px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(0, 180, 216, 0.04);
+  animation: cardEntrance 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes cardEntrance {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── 4. CABECERA ────────────────────────────────────────────────────────── */
+.card-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.logo-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(0, 180, 216, 0.2), rgba(56, 189, 248, 0.1));
+  border: 1px solid rgba(0, 180, 216, 0.25);
+  color: #38bdf8;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 0 20px rgba(0, 180, 216, 0.1);
+}
+
+.logo-icon svg {
+  width: 32px;
+  height: 32px;
+}
+
+.card-title {
+  font-size: 1.75rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--text-main);
+  margin: 0 0 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+.card-subtitle {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.card-subtitle strong {
+  color: var(--color-primary);
+}
+
+/* ── 5. ALERTAS ─────────────────────────────────────────────────────────── */
+.alert {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1rem;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  animation: fadeIn 0.3s ease;
+}
+
+.alert-success {
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  color: #34d399;
+}
+
+.alert-error {
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  color: #f87171;
+}
+
+/* ── 6. FORMULARIO ──────────────────────────────────────────────────────── */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.form-label {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #cbd5e1;
+  letter-spacing: 0.01em;
+}
+
+.form-label svg {
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+/* ── 7. INPUTS ──────────────────────────────────────────────────────────── */
+.input-wrapper {
+  position: relative;
+}
+
+.input-wrapper input {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 10px;
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.input-wrapper input::placeholder {
+  color: #3d4a5c;
+  font-size: 0.88rem;
+}
+
+/* Focus: anillo cian (diferenciador visual respecto al signup dorado) */
+.input-wrapper input:focus {
+  border-color: #38bdf8;
+  background: rgba(56, 189, 248, 0.03);
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.12);
+}
+
+.input-wrapper.has-error input {
+  border-color: #f87171;
+  box-shadow: 0 0 0 3px rgba(248, 113, 113, 0.1);
+}
+
+/* ── 8. CAMPO DE CONTRASEÑA ─────────────────────────────────────────────── */
+.password-wrapper input {
+  padding-right: 2.8rem;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s ease;
+  border-radius: 4px;
+}
+
+.toggle-password:hover {
+  color: #38bdf8;
+}
+
+/* ── 9. VALIDACIÓN ──────────────────────────────────────────────────────── */
+.validation-error {
+  font-size: 0.75rem;
+  color: #f87171;
+  font-weight: 500;
+  padding-left: 0.1rem;
+  animation: fadeIn 0.2s ease;
+}
+
+/* ── 10. BOTÓN DE ENVÍO ─────────────────────────────────────────────────── */
+.btn-submit {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  margin-top: 0.5rem;
+  /* Gradiente cian → azul para diferenciar de signup */
+  background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+  box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
+}
+
+.btn-submit:hover:not([disabled]) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(14, 165, 233, 0.45);
+}
+
+.btn-submit:active:not([disabled]) {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(14, 165, 233, 0.25);
+}
+
+.btn-submit[disabled] {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.btn-submit.loading {
+  background: linear-gradient(135deg, #0369a1, #1d4ed8);
+}
+
+/* ── 11. SPINNER ────────────────────────────────────────────────────────── */
+.spinner {
+  animation: spin 0.8s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ── 12. PIE DE TARJETA ─────────────────────────────────────────────────── */
+.login-footer {
+  text-align: center;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin: 1.5rem 0 0;
+}
+
+.footer-link {
+  color: var(--color-primary);
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.footer-link:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+/* ── 13. UTILIDADES ─────────────────────────────────────────────────────── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── 14. RESPONSIVE ─────────────────────────────────────────────────────── */
+@media (max-width: 520px) {
+  .login-card {
+    padding: 2rem 1.5rem 1.5rem;
+    border-radius: 16px;
+  }
+
+  .card-title {
+    font-size: 1.5rem;
+  }
+}

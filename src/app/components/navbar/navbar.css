@@ -107,6 +107,24 @@
 .nav-actions {
   display: flex;
   align-items: center;
+  gap: 1rem;
+}
+
+.btn-login-nav {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.btn-login-nav:hover {
+  color: #ffffff;
+}
+
+.btn-login-nav.active {
+  color: var(--color-primary);
 }
 
 .btn-portal {
@@ -122,6 +140,7 @@
   gap: 0.5rem;
   cursor: pointer;
   transition: all 0.3s ease;
+  text-decoration: none;
 }
 
 .btn-portal:hover {
@@ -137,6 +156,43 @@
 
 .btn-portal:hover svg {
   transform: translateX(3px);
+}
+
+/* Estilos de sesión activa en la barra superior */
+.user-welcome {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-family: var(--font-sans);
+}
+
+.user-welcome strong {
+  color: var(--color-primary);
+}
+
+.btn-logout {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  color: #f87171;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-logout:hover {
+  background: rgba(239, 68, 68, 0.25);
+  border-color: #ef4444;
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);
+}
+
+.btn-logout:active {
+  transform: translateY(0);
 }
 
 @media (max-width: 768px) {
