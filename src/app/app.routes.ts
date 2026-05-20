@@ -3,7 +3,6 @@ import { Home } from './pages/home/home';
 import { Reservas } from './pages/reservas/reservas';
 import { Temario } from './pages/temario/temario';
 
-import { Test } from './pages/test/test';
 import { Permisos } from './pages/permisos/permisos';
 import { Conocenos } from './pages/conocenos/conocenos';
 import { Blog } from './pages/blog/blog';
@@ -17,7 +16,6 @@ export const routes: Routes = [
   { path: 'reservas', component: Reservas },
   { path: 'temario', component: Temario },
   { path: 'temario/:id', loadComponent: () => import('./pages/tema-detalle/tema-detalle').then(m => m.TemaDetalle) },
-  { path: 'test', component: Test },
   { path: 'permisos', component: Permisos },
   { path: 'signup', component: Signup },
   { path: 'login', component: Login },
