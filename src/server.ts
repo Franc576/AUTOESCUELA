@@ -42,13 +42,13 @@ app.post('/api/registro', async (req, res) => {
     });
 
     const mailOptions = {
-      from: `"Autoescuela SJO" <${GMAIL_USER}>`,
+      from: `"Autoescuela Matthew" <${GMAIL_USER}>`,
       to: correo_electronico,
-      subject: '🚗 ¡Confirmación de Registro - Autoescuela SJO!',
+      subject: '🚗 ¡Confirmación de Registro - Autoescuela Matthew!',
       html: `
         <div style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 25px; border: 1px solid #e2e8f0; border-radius: 12px; background-color: #ffffff; color: #1e293b;">
           <div style="text-align: center; border-bottom: 2px solid #3b82f6; padding-bottom: 15px; margin-bottom: 20px;">
-            <h1 style="color: #1e3a8a; margin: 0; font-size: 24px;">🚗 Autoescuela SJO</h1>
+            <h1 style="color: #1e3a8a; margin: 0; font-size: 24px;">🚗 Autoescuela Matthew</h1>
             <p style="color: #64748b; margin: 5px 0 0 0; font-size: 14px;">Tu carnet a la primera</p>
           </div>
           
@@ -62,12 +62,16 @@ app.post('/api/registro', async (req, res) => {
             <ul style="list-style-type: none; padding: 0; margin: 0; line-height: 1.8; font-size: 15px;">
               <li><strong>Nombre completo:</strong> ${nombre_completo}</li>
               <li><strong>Teléfono:</strong> ${telefono}</li>
-              <li><strong>Permiso de interés:</strong> ${tipo_carnet === 'coche_B'
-          ? 'Coche (Permiso B)'
-          : tipo_carnet === 'moto_A'
-            ? 'Moto (Permiso A2/A)'
-            : 'Ciclomotor (Permiso AM)'
-        }</li>
+              <li><strong>Permiso de interés:</strong> ${
+                tipo_carnet === 'B' ? 'Coche (Permiso B)' :
+                tipo_carnet === 'A1' ? 'Moto Ligera (Permiso A1)' :
+                tipo_carnet === 'A2' ? 'Moto Intermedia (Permiso A2)' :
+                tipo_carnet === 'A' ? 'Moto sin límite (Permiso A)' :
+                tipo_carnet === 'AM' ? 'Ciclomotor (Permiso AM)' :
+                tipo_carnet === 'C' ? 'Camión Rígido (Permiso C)' :
+                tipo_carnet === 'CE' ? 'Tráiler / Camión con Remolque (Permiso C+E)' :
+                tipo_carnet === 'CAP' ? 'Certificado de Aptitud Profesional (CAP)' : tipo_carnet
+              }</li>
             </ul>
           </div>
           
@@ -80,7 +84,7 @@ app.post('/api/registro', async (req, res) => {
           </p>
           
           <div style="text-align: center; margin: 30px 0 10px 0; padding-top: 15px; border-top: 1px solid #e2e8f0; font-size: 12px; color: #94a3b8;">
-            <p style="margin: 0;">© 2026 Autoescuela SJO. Todos los derechos reservados.</p>
+            <p style="margin: 0;">© 2026 Autoescuela Matthew. Todos los derechos reservados.</p>
             <p style="margin: 5px 0 0 0;">Esta es una confirmación automática. Por favor no respondas a este correo.</p>
           </div>
         </div>
