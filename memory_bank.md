@@ -142,9 +142,29 @@ En esta sección guardaremos los prompts de sistema y de desarrollo más útiles
   - **Sección Flota (`home.html` y `home.css`)**: Implementada una sección premium llamada *"Nuestra Flota"* equipada con una tarjeta *Glassmorphic* para el coche, especificaciones técnicas animadas, insignias ecológicas ("Eco-friendly 🌿") e información detallada de ventajas de aprendizaje (seguridad con doble mando, asistentes de conducción en rampa/sensores y uso del mismo coche en el examen).
   - **Rama Git**: `feat-Sign-in`, subida a GitHub.
 
+### 12. Implementación Completa de Reserva de Prácticas (Restricción de Calendario y Cancelaciones)
+* **Objetivo:** Hacer 100% funcional el componente de Reserva de Prácticas con verificación de sesión del usuario, validación estricta de calendario y opción de cancelación dinámica.
+* **Prompt Utilizado:**
+  > "Estoy en mi proyecto de Angular para la Autoescuela Matthew. Quiero hacer 100% funcional el componente de Reserva de Prácticas modificando su HTML y TypeScript (.ts). Aplica las siguientes reglas en el código:
+  > 
+  > Control de acceso (Login obligatorio): En el archivo .ts, comprueba si existe la clave 'usuarioLogueado' en el localStorage. Si NO existe, el HTML debe ocultar el formulario y mostrar un mensaje elegante en tonos negros y naranjas que diga: '¡Atención alumno! 🚗 Para reservar tus clases prácticas debes iniciar sesión o crear una cuenta.' Añade dos botones que simulen ir a esas pantallas.
+  > 
+  > Formulario de Reserva (Solo alumnos): Si el usuario SÍ está logueado, muestra el formulario con vuestro estilo visual. Debe incluir:
+  > - Un selector de fecha donde solo se permitan seleccionar Lunes, Miércoles y Viernes (añade una validación en el TS para avisar si eligen otro día).
+  > - Un selector de horario dividido en: Mañana (09:00 o 11:00) y Tarde (16:00 o 18:00).
+  > 
+  > Guardar la reserva: Al hacer clic en el botón 'Confirmar Reserva 📅', guarda los datos de la reserva (Día, Hora y el nombre del alumno) dentro de un array en el localStorage llamado 'reservas_autoescuela' para que se queden registrados de verdad. Muestra un alert de éxito que diga '¡Clase reservada con éxito!'."
+  > *(Segunda parte)*: "Vale, ahora haz que las practicas se puedan cancelar y que a la hora de elegir el dia cualquier dia que no sea lunes miercoles o viernes sea imposible de seleccionar"
+* **Resultados:**
+  - **Componente `Reservas`**: Modificado en `src/app/pages/reservas/reservas.ts` y `reservas.html` usando `FormsModule` de Angular y el nuevo control de flujo `@if`/`@else`.
+  - **Autenticación real**: Enlazado con la sesión real `'autoescuela_session'` creada por el flujo de registro/login. Si no hay sesión, se muestra el aviso premium con estética negra y naranja neón y botones redireccionables.
+  - **Calendario ultra-restringido**: Vinculado `[min]="minFecha"` para bloquear fechas pasadas. En el callback `(change)="validarFecha()"`, cualquier selección de día de la semana que no sea Lunes, Miércoles o Viernes se limpia al instante y avisa al alumno con un alert.
+  - **Horarios Organizados**: Opciones agrupadas semánticamente en Mañana (09:00/11:00) y Tarde (16:00/18:00) mediante `<optgroup>`.
+  - **Cancelación Real y Feedback Instantáneo**: Botón "Cancelar Práctica" dinámico que limpia el `localStorage` del usuario tras un aviso de confirmación. Adicionalmente, la barra de "Resumen de Prácticas" calcula de forma reactiva el progreso de clases tomadas e indica cuántas prácticas restan para presentarse al examen (base recomendado: 30).
+
 ---
 
 ## 🗃️ Registro Cronológico de Sesiones
 * **2026-05-19 (Sesión 1):** Creación y preparación del `memory_bank.md`. Configuración de credenciales Git. Simulador de test interactivo de 30 preguntas. Formulario de inscripción premium y backend de notificaciones Express + Nodemailer para la confirmación de email. Página 'Conócenos' y sección 'Blog' de temas tabú de conducción.
 * **2026-05-19 (Sesión 2):** Página premium de Permisos de Conducción. Renombrado global a **AUTOESCUELA MATTHEW**. Flujo de **Registro** (`/signup`) y **Login** (`/login`) 100% funcionales en `localStorage` con alertas e inicio reactivo de sesión en cabecera. **Optimización de la Flota**: Incremento cualitativo hiperrealista en 8K del coche de prácticas del alumno (`coche_practicas.png`) e integración de la sección *"Nuestra Flota"* en la Home. Compilación validada satisfactoriamente y subida a origin.
-
+* **2026-05-20 (Sesión 3):** Implementación de la sección de reservas 100% interactiva en la rama `feat-mejorar-reservas`. Integración de validación estricta de días (L-M-V), control de acceso enlazado a `autoescuela_session`, cancelación de reserva dinámica con alertas de seguridad y actualización automática de la barra de progreso de prácticas del alumno en tiempo real.

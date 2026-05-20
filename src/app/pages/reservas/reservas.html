@@ -7,52 +7,66 @@
 
   <div class="booking-grid">
     <!-- Active bookings / Upcoming Class -->
-    <div class="dashboard-column">
-      <h2 class="column-title">Tu Próxima Clase</h2>
-      
-      <div class="upcoming-card">
-        <div class="card-glow"></div>
-        <div class="upcoming-badge">Confirmada</div>
+      <div class="dashboard-column">
+        <h2 class="column-title">Tu Próxima Clase</h2>
         
-        <div class="upcoming-details">
-          <div class="date-box">
-            <span class="day">22</span>
-            <span class="month">MAY</span>
-          </div>
-          <div class="time-box">
-            <span class="time">16:30 - 18:00</span>
-            <span class="duration">90 Minutos</span>
-          </div>
-        </div>
-
-        <div class="divider"></div>
-
-        <div class="instructor-car-info">
-          <div class="info-item">
-            <div class="avatar-placeholder">C</div>
-            <div>
-              <span class="label">Profesor</span>
-              <span class="value">Carlos Ruiz</span>
+        @if (proximaClase) {
+          <div class="upcoming-card">
+            <div class="card-glow"></div>
+            <div class="upcoming-badge">Confirmada</div>
+            
+            <div class="upcoming-details">
+              <div class="date-box">
+                <span class="day">{{ formatDate(proximaClase.dia).day }}</span>
+                <span class="month">{{ formatDate(proximaClase.dia).month }}</span>
+              </div>
+              <div class="time-box">
+                <span class="time">{{ proximaClase.hora }}</span>
+                <span class="duration">90 Minutos</span>
+              </div>
             </div>
-          </div>
-          <div class="info-item">
-            <div class="car-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/>
-                <circle cx="7" cy="17" r="2"/>
-                <circle cx="17" cy="17" r="2"/>
-                <path d="M9 17h6"/>
-              </svg>
-            </div>
-            <div>
-              <span class="label">Vehículo</span>
-              <span class="value">Peugeot 208 (Manual)</span>
-            </div>
-          </div>
-        </div>
 
-        <button class="btn-cancel">Cancelar Práctica</button>
-      </div>
+            <div class="divider"></div>
+
+            <div class="instructor-car-info">
+              <div class="info-item">
+                <div class="avatar-placeholder">C</div>
+                <div>
+                  <span class="label">Profesor</span>
+                  <span class="value">Carlos Ruiz</span>
+                </div>
+              </div>
+              <div class="info-item">
+                <div class="car-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/>
+                    <circle cx="7" cy="17" r="2"/>
+                    <circle cx="17" cy="17" r="2"/>
+                    <path d="M9 17h6"/>
+                  </svg>
+                </div>
+                <div>
+                  <span class="label">Vehículo</span>
+                  <span class="value">Peugeot 208 (Manual)</span>
+                </div>
+              </div>
+            </div>
+
+            <button class="btn-cancel" (click)="cancelarPractica(proximaClase)">Cancelar Práctica</button>
+          </div>
+        } @else {
+          <div class="upcoming-card" style="align-items: center; text-align: center; justify-content: center; min-height: 250px;">
+            <div class="avatar-placeholder" style="width: 60px; height: 60px; font-size: 1.5rem; margin-bottom: 1rem; border: none; background: transparent;">📅</div>
+            <h3 style="color: white; margin-bottom: 0.5rem; font-size: 1.2rem;">Sin clases programadas</h3>
+            <p style="color: var(--text-muted); font-size: 0.95rem;">
+              @if (isLoggedIn) {
+                Reserva una clase en el panel para comenzar tus prácticas.
+              } @else {
+                Inicia sesión para ver y gestionar tus reservas.
+              }
+            </p>
+          </div>
+        }
 
       <!-- Quick Summary -->
       <div class="summary-card">
@@ -60,73 +74,63 @@
         <div class="progress-bar-container">
           <div class="progress-labels">
             <span>Prácticas Realizadas</span>
-            <span>12 / 30</span>
+            <span>{{ misReservas.length }} / 30</span>
           </div>
           <div class="progress-bar">
-            <div class="progress-fill" style="width: 40%"></div>
+            <div class="progress-fill" [style.width.%]="(misReservas.length / 30) * 100"></div>
           </div>
         </div>
-        <p class="summary-footer">¡Te quedan 18 prácticas recomendadas para presentarte al examen!</p>
+        <p class="summary-footer">¡Te quedan {{ 30 - misReservas.length }} prácticas recomendadas para presentarte al examen!</p>
       </div>
     </div>
 
-    <!-- Available Slots List -->
+    <!-- Available Slots List / Reservation Form -->
     <div class="dashboard-column">
-      <h2 class="column-title">Horarios Disponibles esta semana</h2>
-      
-      <div class="slots-list">
-        <!-- Slot 1 -->
-        <div class="slot-item">
-          <div class="slot-time-info">
-            <span class="slot-date">Hoy, 19 de Mayo</span>
-            <span class="slot-hours">18:00 - 19:30</span>
+      @if (isLoggedIn) {
+        <h2 class="column-title">Reservar Nueva Práctica</h2>
+        
+        <div class="booking-form-card">
+          <div class="form-group">
+            <label for="fecha">Selecciona el Día</label>
+            <input 
+              type="date" 
+              id="fecha" 
+              class="form-control" 
+              [(ngModel)]="fechaReserva" 
+              (change)="validarFecha()"
+              [min]="minFecha"
+            >
+            <small class="form-help">Solo Lunes, Miércoles y Viernes.</small>
           </div>
-          <div class="slot-meta">
-            <span class="instructor">Carlos Ruiz</span>
-            <span class="car">Peugeot 208</span>
-          </div>
-          <button class="btn-book">Reservar</button>
-        </div>
 
-        <!-- Slot 2 -->
-        <div class="slot-item">
-          <div class="slot-time-info">
-            <span class="slot-date">Mañana, 20 de Mayo</span>
-            <span class="slot-hours">09:00 - 10:30</span>
+          <div class="form-group">
+            <label for="hora">Selecciona el Horario</label>
+            <select id="hora" class="form-control" [(ngModel)]="horaReserva">
+              <option value="" disabled selected>Elige una hora</option>
+              <optgroup label="Mañana">
+                <option value="09:00">09:00</option>
+                <option value="11:00">11:00</option>
+              </optgroup>
+              <optgroup label="Tarde">
+                <option value="16:00">16:00</option>
+                <option value="18:00">18:00</option>
+              </optgroup>
+            </select>
           </div>
-          <div class="slot-meta">
-            <span class="instructor">Ana Belén</span>
-            <span class="car">VW Golf (Automático)</span>
-          </div>
-          <button class="btn-book">Reservar</button>
-        </div>
 
-        <!-- Slot 3 -->
-        <div class="slot-item">
-          <div class="slot-time-info">
-            <span class="slot-date">Mañana, 20 de Mayo</span>
-            <span class="slot-hours">11:00 - 12:30</span>
-          </div>
-          <div class="slot-meta">
-            <span class="instructor">Ana Belén</span>
-            <span class="car">VW Golf (Automático)</span>
-          </div>
-          <button class="btn-book">Reservar</button>
+          <button class="btn-submit" (click)="reservar()">Confirmar Reserva 📅</button>
         </div>
-
-        <!-- Slot 4 -->
-        <div class="slot-item">
-          <div class="slot-time-info">
-            <span class="slot-date">Jueves, 21 de Mayo</span>
-            <span class="slot-hours">16:00 - 17:30</span>
+      } @else {
+        <div class="login-alert-card">
+          <div class="alert-icon">🚗</div>
+          <h3 class="alert-title">¡Atención alumno!</h3>
+          <p class="alert-desc">Para reservar tus clases prácticas debes iniciar sesión o crear una cuenta.</p>
+          <div class="alert-actions">
+            <a routerLink="/login" class="btn-login">Iniciar Sesión</a>
+            <a routerLink="/registro" class="btn-register">Crear Cuenta</a>
           </div>
-          <div class="slot-meta">
-            <span class="instructor">Carlos Ruiz</span>
-            <span class="car">Peugeot 208</span>
-          </div>
-          <button class="btn-book">Reservar</button>
         </div>
-      </div>
+      }
     </div>
   </div>
 </div>
