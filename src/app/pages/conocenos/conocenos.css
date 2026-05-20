@@ -242,11 +242,13 @@ h2 {
 .avatar-container {
   position: relative;
   margin-bottom: 1.5rem;
-  width: 110px;
-  height: 110px;
+  width: 170px;
+  height: 170px;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .avatar-ring {
@@ -267,24 +269,25 @@ h2 {
 .accent-ring { border-color: var(--color-accent); }
 
 .avatar {
-  width: 210px;
-  height: 210px;
+  width: 140px;
+  height: 140px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-  margin-bottom: 2rem;
-  margin-left: auto;
-  margin-right: auto;
+  background: linear-gradient(135deg, var(--bg-card), rgba(255, 255, 255, 0.05));
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-  border: 4px solid rgba(255, 255, 255, 0.08);
+  border: 3px solid rgba(255, 255, 255, 0.08);
   overflow: hidden;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  z-index: 2;
 }
 
 .persona-card:hover .avatar {
-  transform: scale(1.06);
-  border-color: rgba(6, 182, 212, 0.4);
-  box-shadow: 0 10px 35px rgba(6, 182, 212, 0.4);
+  transform: scale(1.05);
+  border-color: rgba(255, 183, 3, 0.4);
+  box-shadow: 0 10px 30px rgba(255, 183, 3, 0.2);
 }
 
 .avatar img {
@@ -299,90 +302,66 @@ h2 {
 }
 
 .persona-card h3 {
-  font-size: 1.45rem;
+  font-size: 1.5rem;
+  font-family: var(--font-display);
   font-weight: 700;
   margin-bottom: 0.6rem;
-  color: #ffffff;
+  color: var(--text-main);
   transition: color 0.3s ease;
 }
 
 .persona-card:hover h3 {
-  color: #06b6d4;
+  color: var(--color-primary);
 }
 
 .rol {
-  color: #a855f7;
   font-weight: 600;
   margin-bottom: 1.5rem;
   font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 2px;
-  background: rgba(168, 85, 247, 0.08);
   padding: 0.35rem 0.95rem;
   border-radius: 20px;
-  border: 1px solid rgba(168, 85, 247, 0.2);
   transition: all 0.3s ease;
   display: inline-block;
 }
 
+.rol.primary-text {
+  color: var(--color-primary);
+  background: rgba(255, 183, 3, 0.08);
+  border: 1px solid rgba(255, 183, 3, 0.2);
+}
+
+.rol.secondary-text {
+  color: var(--color-secondary);
+  background: rgba(0, 180, 216, 0.08);
+  border: 1px solid rgba(0, 180, 216, 0.2);
+}
+
+.rol.accent-text {
+  color: var(--color-accent);
+  background: rgba(251, 133, 0, 0.08);
+  border: 1px solid rgba(251, 133, 0, 0.2);
+}
+
 .persona-card:hover .rol {
-  background: rgba(6, 182, 212, 0.08);
-  color: #06b6d4;
-  border-color: rgba(6, 182, 212, 0.2);
-  background: var(--bg-secondary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2;
-  border: 3px solid var(--bg-primary);
-  box-shadow: var(--shadow-sm);
-  color: var(--text-main);
+  background: var(--text-main);
+  color: var(--bg-primary);
+  border-color: var(--text-main);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.15);
 }
-
-.avatar svg {
-  width: 40px;
-  height: 40px;
-  opacity: 0.8;
-}
-
-.persona-card h3 {
-  font-size: 1.4rem;
-  margin-bottom: 0.5rem;
-}
-
-.rol {
-  font-weight: 600;
-  margin-bottom: 1.5rem;
-  font-size: 0.95rem;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-}
-
-.primary-text { color: var(--color-primary); }
-.secondary-text { color: var(--color-secondary); }
-.accent-text { color: var(--color-accent); }
 
 .desc {
-  color: #f1f5f9; /* Incrementada claridad para mejor legibilidad sobre fondo oscuro */
-  font-size: 0.95rem;
   color: var(--text-muted);
-  font-size: 1rem;
+  font-size: 0.95rem;
   line-height: 1.6;
   transition: color 0.3s ease;
 }
 
 .persona-card:hover .desc {
-  color: #ffffff; /* Brillo máximo en hover */
+  color: var(--text-main);
 }
 
-
-
-/* Ubicación */
-.ubicacion-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  align-items: center;
 /* Ubicación Section */
 .ubicacion-section {
   height: 100%;
