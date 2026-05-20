@@ -24,6 +24,7 @@
   font-weight: 800;
   background: linear-gradient(135deg, #06b6d4, #8b5cf6, #ec4899);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 1rem;
 }
@@ -115,45 +116,114 @@ h2 {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 2.5rem 2rem;
+  padding: 3rem 2.2rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.persona-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0), rgba(139, 92, 246, 0));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  transition: all 0.4s ease;
+}
+
+.persona-card:hover {
+  transform: translateY(-8px);
+  background: rgba(30, 41, 59, 0.6);
+  box-shadow: 0 20px 40px rgba(6, 182, 212, 0.08);
+}
+
+.persona-card:hover::after {
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.4), rgba(139, 92, 246, 0.4));
 }
 
 .avatar {
-  width: 90px;
-  height: 90px;
+  width: 210px;
+  height: 210px;
   border-radius: 50%;
   background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-  color: white;
-  font-size: 2.5rem;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1.5rem;
-  box-shadow: 0 4px 20px rgba(139, 92, 246, 0.4);
-  border: 3px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  border: 4px solid rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.persona-card:hover .avatar {
+  transform: scale(1.06);
+  border-color: rgba(6, 182, 212, 0.4);
+  box-shadow: 0 10px 35px rgba(6, 182, 212, 0.4);
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.persona-card:hover .avatar img {
+  transform: scale(1.08);
 }
 
 .persona-card h3 {
-  font-size: 1.3rem;
-  margin-bottom: 0.5rem;
-  color: #f1f5f9;
+  font-size: 1.45rem;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+  color: #ffffff;
+  transition: color 0.3s ease;
+}
+
+.persona-card:hover h3 {
+  color: #06b6d4;
 }
 
 .rol {
-  color: #06b6d4;
-  font-weight: 500;
+  color: #a855f7;
+  font-weight: 600;
   margin-bottom: 1.5rem;
-  font-size: 1rem;
+  font-size: 0.85rem;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
+  background: rgba(168, 85, 247, 0.08);
+  padding: 0.35rem 0.95rem;
+  border-radius: 20px;
+  border: 1px solid rgba(168, 85, 247, 0.2);
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.persona-card:hover .rol {
+  background: rgba(6, 182, 212, 0.08);
+  color: #06b6d4;
+  border-color: rgba(6, 182, 212, 0.2);
 }
 
 .desc {
-  color: #94a3b8;
-  font-size: 1rem;
+  color: #f1f5f9; /* Incrementada claridad para mejor legibilidad sobre fondo oscuro */
+  font-size: 0.95rem;
   line-height: 1.6;
+  transition: color 0.3s ease;
 }
+
+.persona-card:hover .desc {
+  color: #ffffff; /* Brillo máximo en hover */
+}
+
+
 
 /* Ubicación */
 .ubicacion-content {
