@@ -14,13 +14,13 @@ export interface Question {
 }
 
 @Component({
-  selector: 'app-test',
+  selector: 'app-temario',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './test.html',
-  styleUrl: './test.css',
+  templateUrl: './temario.html',
+  styleUrl: './temario.css',
 })
-export class Test {
+export class Temario {
   questions: Question[] = [
     { id: 1, category: 'Velocidad', text: '¿Cuál es la velocidad máxima en una autovía para un turismo?', options: [{ text: '120 km/h', isCorrect: true }, { text: '100 km/h', isCorrect: false }, { text: '90 km/h', isCorrect: false }] },
     { id: 2, category: 'Alcohol', text: '¿Cuál es la tasa de alcohol máxima permitida para un conductor novel en sangre?', options: [{ text: '0,30 g/l', isCorrect: true }, { text: '0,50 g/l', isCorrect: false }, { text: '0,15 g/l', isCorrect: false }] },

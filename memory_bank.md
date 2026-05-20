@@ -104,7 +104,18 @@ En esta sección guardaremos los prompts de sistema y de desarrollo más útiles
 * **Prompt Utilizado:**
   > "vale, tenemos que modificar que en las respuestas me he fijado que colocas siempre la verdadera en la A, asi la gente aprende el patron y hace trampa. Cambialo, que sean aleatorias pero que las respuestas sean verdaderas"
 
+### 9. Conversión de "Conócenos" a "Temario" e Integración del Test
+* **Objetivo:** Convertir la sección estática de Conócenos en un centro de estudio interactivo ("Temario") que liste los módulos oficiales de la DGT y combine en la misma pantalla el Simulador de Test previamente desarrollado.
+* **Prompt Utilizado:**
+  > "tenemos que modificar esta parte, la seccion se va a llamar temario, y dentro de la seccion vamos a poner los diferentes temas que tienen una autoescuela, como las señales, preferencias... coge temario real, no te inventes nada y luego en esa seccion tambien el test que habia antes para que la gente pueda practicar"
+
+### 10. Vista Detallada de cada Tema del Temario
+* **Objetivo:** Crear una vista dinámica e individual para cada módulo del temario donde el alumno pueda entrar y leer el resumen oficial de cada tema de la DGT.
+* **Prompt Utilizado:**
+  > "en cada tema del temario se tiene que poder entrar y ver el temario dentro de cada tema correspondiente"
+
 ---
 
 ## 🗃️ Registro Cronológico de Sesiones
 * **2026-05-19 (Sesión actual):** Creación y preparación del `memory_bank.md`. Configuración final de credenciales Git. Implementación funcional del simulador de test (30 preguntas, estado dinámico, pantalla de resultados). Creación de la rama `feat-formulario` y desarrollo del componente de Registro con estética Glassmorphism. Integración del formulario reactivo en la Home y desarrollo de la conexión con un endpoint de Express y Nodemailer para el envío automático y seguro de correos de confirmación desde Gmail. Modificación del componente de Test en la rama `test-pdf` para aleatorizar el orden de las opciones de respuesta y evitar el patrón predecible de que la opción correcta sea siempre la A.
+* **2026-05-20 (Sesión actual):** Refactorización de la sección "Conócenos" en un nuevo hub "Temario". Integración del simulador de examen en la parte inferior de la página de Temario. Creación de rutas dinámicas y componentes de detalle (`TemaDetalle`) para visualizar resúmenes oficiales de la DGT para cada uno de los 8 módulos del temario.
